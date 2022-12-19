@@ -1,13 +1,18 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/database.php';
-if ($_GET['name'] === '') {
-  $_GET['name'] = '%';
-}
-if ($_GET['price'] === '') {
-  $_GET['price'] = '%';
-}
+$items = array();
 $db = new Database();
-$items = $db->filtredItems();
+if(isset($_GET['name']) && isset($_GET['name'])) {
+  if ($_GET['name'] === '') {
+    $_GET['name'] = '%';
+  }
+  if ($_GET['price'] === '') {
+    $_GET['price'] = '%';
+  }
+  $items = $db->filtredItems();
+} else {
+  $items = $db->fetchItems();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -266,15 +271,15 @@ $items = $db->filtredItems();
           <button id="clear-filter-btn" href="" >Очистить фильтр</button>
       </div>
     </form>
-    <?php foreach ($items as $item):?>
-      <div class="card item-container">
-        <div class="name">Название: <?=$item['name']?></div>
-        <div class="price">Цена: <?=$item['price']?></div>
-        <div class="recepie">Рецепт:<?=$item['recepie']?></div>
-        <div class="place">Торговая точка:<?=$item['place_name']?></div>
-        <img src="images/<?=$item['picture']?>" class="picture"/>
-      </div>
-    <?php endforeach?>
+      <?php foreach ($items as $item):?>
+        <div class="card item-container">
+          <div class="name">Название: <?=$item['name']?></div>
+          <div class="price">Цена: <?=$item['price']?></div>
+          <div class="recepie">Рецепт:<?=$item['recepie']?></div>
+          <div class="place">Торговая точка:<?=$item['place_name']?></div>
+          <img src="images/<?=$item['picture']?>" class="picture"/>
+        </div>
+      <?php endforeach?>
     <footer>
       <div class="footer-container">
         <div class="container text-center">
