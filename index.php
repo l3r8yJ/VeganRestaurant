@@ -271,6 +271,7 @@ if(isset($_GET['name']) && isset($_GET['name'])) {
           <button id="clear-filter-btn" href="" >Очистить фильтр</button>
       </div>
     </form>
+    <?if(count($items)):?>
       <?php foreach ($items as $item):?>
         <div class="card item-container">
           <div class="name">Название: <?=$item['name']?></div>
@@ -280,6 +281,9 @@ if(isset($_GET['name']) && isset($_GET['name'])) {
           <img src="images/<?=$item['picture']?>" class="picture"/>
         </div>
       <?php endforeach?>
+    <?else:?>
+      <span>Ничего не найдено...</span>
+    <?endif?>
     <footer>
       <div class="footer-container">
         <div class="container text-center">
