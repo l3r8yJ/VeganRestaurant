@@ -1,3 +1,14 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/database.php';
+if ($_GET['name'] === '') {
+  $_GET['name'] = '%';
+}
+if ($_GET['price'] === '') {
+  $_GET['price'] = '%';
+}
+$db = new Database();
+$items = $db->filtredItems();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,7 +19,6 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
     <header>
         <div class="container text-center">
             <div class="row">
@@ -68,10 +78,6 @@
                       <img src="images/lk-icon.png" alt="" class="header-icon" id="lk-icon-img">
                     </a>
                   </span>
-
-                
-
-                    
                 </div>
                 <div class="bottom-header-row">
                     <span class="bottom-header-menu-item">
@@ -249,173 +255,26 @@
               </div>
             </nav>
           </div>
-    </header>   
-
-    <main>
-      <div class="breacrumb-container">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Главная страница</a></li>
-            <li class="breadcrumb-item"><a href="#">Растительные молочные альтернативы</a></li>
-            <li class="breadcrumb-item"><a href="#">Напитки на растительном молоке</a></li>
-            <li class="breadcrumb-item active"  aria-current="page"><a href="#">Кашка овсяная с бананом «Nemoloko», 200мл</a></li>
-          </ol>
-        </nav>
+    </header>
+    <form action="/" method="get">
+      <div id="filter-container">
+       <label>Введите название блюда</label>
+         <input name="name" class="input-item" type="text" placeholder="Название"></br>
+         <label>Введите стоймость</label>
+         <input name="price" class="input-item" type="text" placeholder="Стоймость"></br>
+         <button type="submit" id="apply-filter-btn" name="sub">Применить фильтр</button>
+          <button id="clear-filter-btn" href="" >Очистить фильтр</button>
       </div>
-      <div class="product-name-container">
-        <h1> Кашка овсяная с бананом «Nemoloko», 200мл	</h1>
+    </form>
+    <?php foreach ($items as $item):?>
+      <div class="card item-container">
+        <div class="name">Название: <?=$item['name']?></div>
+        <div class="price">Цена: <?=$item['price']?></div>
+        <div class="recepie">Рецепт:<?=$item['recepie']?></div>
+        <div class="place">Торговая точка:<?=$item['place_name']?></div>
+        <img src="images/<?=$item['picture']?>" class="picture"/>
       </div>
-      <div class="product-info">
-        <div class="container text-center">
-          <div class="row">
-            <div class="col-6">
-              <img src="images/0ioeomqsd01kawu27g78lk3yvvz9yatf.jpg" alt="" id="product-img">
-              <div class="about-brand">
-                <span id="abot-brand-title" ><b>О бренде</b></span>
-                <span><img src="images/brand.jpg" alt="" id="img-brand"></span>
-                <div class="about-brand-text">
-                  Это Вам 
-                  <b>Nemoloko</b>
-                  , новая линейка растительных продуктов на основе овса, здоровая, полезная и экологичная веганская альтернатива животному молоку.
-                </div>
-                <button class="button-brand">
-                  Товары NeMoloko  (13)
-                </button>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="price-container">
-                  <span id="new-price">69 ₽</span>
-                  <span id="old-price">85 ₽</span>
-              </div>
-
-              <div class="available-container">
-                <span id="available-img-container"><img src="images/close.png" alt="" id="available-img"></span>
-                <span id="available-text">нет в наличии</span>
-              </div>
-
-              <div class="report-receipt-container">
-                <button class="green-button report-receipt">
-                  Сообщить о поступлении
-                </button>
-              </div>
-
-              <div class="tags-container">
-                    <img src="images/i-vegan.png" alt="" class="tags-img">
-                    <img src="images/i-lose-weight.png" alt="" class="tags-img">
-                    <img src="images/i-energy.png" alt="" class="tags-img">
-                    <img src="images/i-mood.png" alt="" class="tags-img">
-                    <img src="images/i-without-soy.png" alt="" class="tags-img">
-              </div>
-              
-              <div class="product-properties">
-                  <h5>О товаре</h5>
-                  <div class="product-property">
-                    <p id="feature-title">Характеристики:</p>
-                    <div class="product-property-item">
-                      <b>Состав:</b> вода, овсяная мука, банановое пюре, рапсовое масло, витаминно-минеральный премикс (витамин D2, витамин В2 (рибофлавин), трикальций фосфат, карбонат кальция).
-                    </div>
-                    <div class="product-property-item">
-                      <b>Вес:</b>
-                      0.2 кг
-                    </div>
-                    <div class="product-property-item">
-                      <b>Страна-изготовитель:</b>
-                      Россия
-                    </div>
-                    <div class="product-property-item">
-                      <b>Марка (бренд):</b>
-                      NeMoloko
-                    </div>
-                    <div class="product-property-item">
-                      <b>Срок годности:</b>
-                      365 дней						
-                    </div>
-                    <div class="product-property-item">
-                      <b>Температура хранения:</b>
-                      23 ± 2 °C
-                    </div>
-                    <div class="product-property-item">
-                      <b>Артикул:</b>
-                      1694.485
-                    </div>
-                  </div>
-                  <div class="product-property">
-                      <p id="feature-title">Пищевая ценность:</p>
-                      <div class="product-property-item">
-                          <b>Энергетическая ценность (на 100г):</b>
-                          95 ккал
-                      </div>
-                      <div class="product-property-item">
-                        <b>Белки:</b>
-                        2 г
-                      </div>
-                      <div class="product-property-item">
-                        <b>Углеводы:</b>
-                        14.5 г
-                      </div>
-                      <div class="product-property-item">
-                        <b>Жиры:</b>
-                        3.2 г
-                      </div>
-                  </div>
-                  <div class="product-property">
-                    <p id="feature-title">Описание:</p>
-                    <div class="product-property-item">
-                     <p>Продукт рекомендуется к употреблению детям, начиная с 8 месяцев в качестве ежедневного прикорма.</p>
-                     <br>
-                     <p>
-                      Питьевые каши, готовые к употреблению — это гомогенный, полезный и питательный продукт готовый к использованию в любом месте и в любое время.</p>
-                   </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="reviews-container">
-        <div class="container text-center">
-          <div class="row">
-            <div class="col-6">
-              <div id="review-title">
-                <h6 > <b>Отзывы</b></h6>
-              </div>
-              <br>
-              <br>
-              <div id="product-rating">
-                <div class="rating-text">
-                  Рейтинг товара:
-                </div>
-                
-                <div class="rating-item-container">
-                  <img src="images/i-leaflet.png" alt="" class="rating-img-item">
-                  <img src="images/i-leaflet.png" alt="" class="rating-img-item">
-                  <img src="images/i-leaflet.png" alt="" class="rating-img-item">
-                  <img src="images/i-leaflet.png" alt="" class="rating-img-item">
-                  <img src="images/i-leaflet.png" alt="" class="rating-img-item">
-                </div>
-              </div>
-            
-              
-              <div class="review-status">
-                Отзывов к этому товару нет
-              </div>
-            </div>
-            
-            <div class="col-6">
-              <button class="green-button provide-feedback">
-                Оставить отзыв
-              </button>
-              <div id="explanation-add-review">
-                Отзыв будет опубликован после модерации
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </main>
-
+    <?php endforeach?>
     <footer>
       <div class="footer-container">
         <div class="container text-center">
@@ -436,7 +295,6 @@
                   9:00 - 21:00
                 </a>
               </div>
-              
             </div>
             <div class="col-1">
               <div class="footer-menu-list">
@@ -696,7 +554,6 @@
        
       </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
 </html>
