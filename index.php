@@ -1,18 +1,14 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/database.php';
-$items = array();
-$db = new Database();
-if(isset($_GET['name']) && isset($_GET['name'])) {
-  if ($_GET['name'] === '') {
-    $_GET['name'] = '%';
-  }
-  if ($_GET['price'] === '') {
-    $_GET['price'] = '%';
-  }
-  $items = $db->filtredItems();
-} else {
-  $items = $db->fetchItems();
-}
+require_once $_SERVER['DOCUMENT_ROOT'] . '/item_service.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/menu_item_repository.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/router.php';
+
+session_start();
+$pdo = new PDO('mysql:host=localhost;dbname=l2', 'root', 'root');
+$service = new ItemService(new MenuItemRepository($pdo));
+$router = new Router(new UserService(new UserRepository($pdo)));
+echo $router->handle();
+$items = $service->items();
 ?>
 <!doctype html>
 <html lang="en">
@@ -271,7 +267,6 @@ if(isset($_GET['name']) && isset($_GET['name'])) {
           <button id="clear-filter-btn" href="" >Очистить фильтр</button>
       </div>
     </form>
-    <?if(count($items)):?>
       <?php foreach ($items as $item):?>
         <div class="card item-container">
           <div class="name">Название: <?=$item['name']?></div>
@@ -281,9 +276,6 @@ if(isset($_GET['name']) && isset($_GET['name'])) {
           <img src="images/<?=$item['picture']?>" class="picture"/>
         </div>
       <?php endforeach?>
-    <?else:?>
-      <span>Ничего не найдено...</span>
-    <?endif?>
     <footer>
       <div class="footer-container">
         <div class="container text-center">
