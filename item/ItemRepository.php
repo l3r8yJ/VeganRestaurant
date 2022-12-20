@@ -1,5 +1,6 @@
 <?php
-class MenuItemRepository{
+
+class ItemRepository {
 
   private PDO $db;
 

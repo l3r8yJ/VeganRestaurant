@@ -1,6 +1,7 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/user_repository.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user/User.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserException.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserRepository.php';
 
 class UserService {
 

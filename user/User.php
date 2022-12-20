@@ -1,4 +1,7 @@
 <?php
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserException.php';
+
 class User {
 
   private string $fio;
@@ -76,5 +79,3 @@ class User {
     }
   }
 }
-
-class UserException extends Exception { }
