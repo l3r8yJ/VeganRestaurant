@@ -9,8 +9,11 @@ class Router {
     $this->service = $service;
   }
 
-  public function handle(): mixed {
-      return match($this->request()) {
+  public function handle(string $route = null): mixed {
+    if (null == $route) {
+      $route = $this->route();
+    }
+      return match($route) {
       'auth' => $this->service->auth(),
       'registration' => $this->service->registration(),
       'logout' => $this->service->logout(),
@@ -19,7 +22,7 @@ class Router {
     };
   }
 
-  private function request(): string {
+  private function route(): string {
     $request = str_replace('.php', '', basename($_SERVER['PHP_SELF']));
     return trim($request, '/');
   }
