@@ -1,6 +1,5 @@
 <?php
-class MenuItemRepository
-{
+class MenuItemRepository {
   private $db;
   private $any = '%';
 

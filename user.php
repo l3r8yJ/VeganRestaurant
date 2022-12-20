@@ -1,25 +1,65 @@
 <?php
 class User {
 
-  private $photo;
   private $fio;
+  private $email;
   private $birthday;
   private $address;
   private $sex;
   private $vk;
   private $bloodType;
-  private $rhesus_factor;
+  private $rhesusFactor;
   private $isAuthenticated;
 
   public function __construct($params) {
-    $this->photo = $params['photo'];
+    $this->checkParams($params);
     $this->fio = $params['fio'];
+    $this->fio = $params['email'];
     $this->birthday = $params['birthday'];
     $this->address = $params['address'];
     $this->sex = $params['sex'];
     $this->vk = $params['vk'];
     $this->bloodType = $params['blood_type'];
-    $this->rhesus_factor = $params['rhesus_factor'];
-    $this->isAuthenticated = false;
+    $this->rhesusFactor = $params['rhesus_factor'];
+  }
+
+  public function getFio() {
+    return $this->fio;
+  }
+
+  public function getBirthday() {
+    return $this->birthday;
+  }
+
+  public function getAddress() {
+    return $this->address;
+  }
+
+  public function getSex() {
+    return $this->sex;
+  }
+
+  public function getVk() {
+    return $this->vk;
+  }
+
+  public function getBloodType() {
+    return $this->bloodType;
+  }
+
+  public function getRhesusFactor() {
+    return $this->rhesusFactor;
+  }
+
+  private checkParams($params) {
+    foreach($params as $param) {
+      $this->checkNull($param);
+    }
+  }
+
+  private checkNull($field) {
+    if(null == $field) {
+      throw new UserException($field . ' not found!');
+    }
   }
 }
