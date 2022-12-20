@@ -18,7 +18,7 @@ class UserRepository {
     $this->db->prepare('
       INSERT INTO l2.user ($fio, email, password, birthday, vk, blood_type, rhesus_factor, sex, address)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ')->$stmt->execute([
+    ')->execute([
       $user->getFio(),
       $user->getEmail(),
       $user->getPassword(),

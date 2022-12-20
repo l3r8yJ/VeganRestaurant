@@ -1,4 +1,6 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
+
 class AuthService {
 
   private $repository;
@@ -11,10 +13,10 @@ class AuthService {
     if($this->isAuthorized()) {
       return 'You already authorized.';
     }
-    if($_SERVER['REQUEST_METHOD' != 'POST']) {
+    if($_SERVER['REQUEST_METHOD'] != 'POST') {
       return 'Wrong method.';
     }
-    $user = $this->repository->userByEmail($_POST['email']);
+    $user = $this->repository->byEmail($_POST['email']);
     if(null == $user) {
       return 'User with this email doesn\'t exist.';
     }
@@ -26,7 +28,18 @@ class AuthService {
   }
 
   public function registration() {
-
+    if($_SERVER['REQUEST_METHOD'] != 'POST') {
+      return 'Wrong method.';
+    }
+    try {
+      $user = new User($_POST);
+      if(null != $this->repository->byEmail($user->getEmail())) {
+        return 'User with this email already exist.';
+      }
+      $this->db->create($user);
+    } catch(Exception $ex) {
+      return $ex->getMessage();
+    }
   }
 
   public function logout() {
