@@ -39,4 +39,31 @@ class ItemRepository {
     }
     return $items[0];
   }
+
+  public function create(array $post): bool {
+    return $this->db->prepare('
+      INSERT INTO l2.menu_item (name, price, recepie, picture, place_id) 
+      VALUES (?, ?, ?, ?, ?)
+    ')->execute([
+      $post['name'],
+      $post['price'],
+      $post['recepie'],
+      $post['picture'],
+      $post['place_id']
+    ]);
+  }
+
+  public function edit(array $post): bool {
+    $stmt = $this->db->prepare('
+        UPDATE l2.menu_item
+        SET name = ?, price = ? , recepie = ?, place_id =?
+        WHERE id = ?
+    ');
+    return $stmt->execute([
+      $post['name'],
+      $post['price'],
+      $post['recepie'],
+      $post['place_id']
+    ]);
+  }
 }

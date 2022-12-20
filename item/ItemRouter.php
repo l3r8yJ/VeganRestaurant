@@ -19,7 +19,7 @@ class ItemRouter extends Router {
     }
     return match($route) {
       'index' => $this->service->items(),
-      'create' => $this->service->create($_POST),
+      'create' => $this->service->create(),
       'edit' => $this->service->edit(),
       'delete' => $this->service->delete(),
       default => 'not found',
