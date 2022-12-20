@@ -1,7 +1,9 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/user_service.php';
 
-class Router {
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Router.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserService.php';
+
+class UserRouter extends Router {
 
   private UserService $service;
 
@@ -20,10 +22,5 @@ class Router {
       'current' => $this->service->current(),
       default => 'not found.',
     };
-  }
-
-  private function route(): string {
-    $request = str_replace('.php', '', basename($_SERVER['PHP_SELF']));
-    return trim($request, '/');
   }
 }
