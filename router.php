@@ -9,7 +9,7 @@ class Router {
     $this->service = $service;
   }
 
-  public function handle() {
+  public function handle(): mixed {
       return match($this->request()) {
       'auth' => $this->service->auth(),
       'registration' => $this->service->registration(),
