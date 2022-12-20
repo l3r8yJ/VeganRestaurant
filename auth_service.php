@@ -1,11 +1,12 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user_repository.php';
 
 class AuthService {
 
   private $repository;
 
-  public function __construct(readonly $repository) {
+  public function __construct($repository) {
     $this->repository = $repository;
   }
 
@@ -47,7 +48,7 @@ class AuthService {
   }
 
   public function notFound() {
-
+    return 'not found.';
   }
 
   private function isAuthorized() {

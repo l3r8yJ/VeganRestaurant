@@ -1,7 +1,7 @@
 <?php
-class MenuItemRepository {
+class MenuItemRepository{
+
   private $db;
-  private $any = '%';
 
   function __construct($db)
   {

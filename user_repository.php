@@ -2,7 +2,7 @@
 class UserRepository {
   private $db;
 
-  public funciton __construct($db) {
+  public function __construct($db) {
     $this->db = $db;
   }
 
@@ -40,6 +40,6 @@ class UserRepository {
     if (!count($user)) {
       return null;
     }
-    return $users[0]
+    return $users[0];
   }
 }

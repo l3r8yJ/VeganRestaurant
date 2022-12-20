@@ -51,13 +51,13 @@ class User {
     return $this->rhesusFactor;
   }
 
-  private checkParams($params) {
+  private function checkParams($params) {
     foreach($params as $param) {
       $this->checkNull($param);
     }
   }
 
-  private checkNull($field) {
+  private function checkNull($field) {
     if(null == $field) {
       throw new UserException($field . ' not found!');
     }

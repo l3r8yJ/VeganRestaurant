@@ -1,11 +1,12 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/item_service.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/menu_item_repository.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/router.php';
 
 session_start();
-$ pdo = new PDO('mysql:host=localhost;dbname=l2', 'root', 'root')
+$pdo = new PDO('mysql:host=localhost;dbname=l2', 'root', 'root');
 $service = new ItemService(new MenuItemRepository($pdo));
-$controller = new Controller(new AuthService(new UserRepository($pdo)));
+$router = new Router(new AuthService(new UserRepository($pdo)));
 $items = $service->items();
 ?>
 <!doctype html>
