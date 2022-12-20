@@ -25,7 +25,7 @@ class UserRepository {
       $user->getBirthday(),
       $user->getVk(),
       $user->getBloodType(),
-      $user->rhesusFactor(),
+      $user->getRhesusFactor(),
       $user->getSex(),
       $user->getAddress()
     ]);

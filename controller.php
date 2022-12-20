@@ -1,7 +1,7 @@
 <?php
 class Controller {
 
-  private readonly $authService;
+  private $authService;
 
   public function __construct(readonly $service) {
     $this->authService = $service;
