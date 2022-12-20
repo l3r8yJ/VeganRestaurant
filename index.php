@@ -1,18 +1,11 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/database.php';
-$items = array();
-$db = new Database();
-if(isset($_GET['name']) && isset($_GET['name'])) {
-  if ($_GET['name'] === '') {
-    $_GET['name'] = '%';
-  }
-  if ($_GET['price'] === '') {
-    $_GET['price'] = '%';
-  }
-  $items = $db->filtredItems();
-} else {
-  $items = $db->fetchItems();
-}
+require_once $_SERVER['DOCUMENT_ROOT'] . '/item_service.php';;
+$service = new ItemService(
+  new MenuItemRepository(
+    new PDO('mysql:host=localhost;dbname=l2', 'root', 'root')
+  )
+);
+$items = $service->items();
 ?>
 <!doctype html>
 <html lang="en">
@@ -281,8 +274,6 @@ if(isset($_GET['name']) && isset($_GET['name'])) {
           <img src="images/<?=$item['picture']?>" class="picture"/>
         </div>
       <?php endforeach?>
-    <?else:?>
-      <span>Ничего не найдено...</span>
     <?endif?>
     <footer>
       <div class="footer-container">

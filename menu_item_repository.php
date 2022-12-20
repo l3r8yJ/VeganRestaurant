@@ -1,12 +1,12 @@
 <?php
-class Database
+class MenuItemRepository
 {
   private $db;
   private $any = '%';
 
-  function __construct()
+  function __construct($db)
   {
-    $this->db = new PDO('mysql:host=localhost;dbname=l2', 'root', 'root');
+    $this->db = $db;
   }
 
   function fetchItems()
@@ -17,12 +17,6 @@ class Database
       INNER JOIN place On place.id=menu_item.place_id;
       '
     );
-  }
-
-  function itemById($id) {
-    $stmt = $this->db->prepare('SELECT * FROM menu_item WHERE id=?', [$id]);
-    $stmt->execute();
-    return $stmt->fetch();
   }
 
   function filtredItems() {
