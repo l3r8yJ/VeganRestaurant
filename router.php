@@ -19,7 +19,7 @@ class Router {
     };
   }
 
-  private function request() {
+  private function request(): string {
     $request = str_replace('.php', '', basename($_SERVER['PHP_SELF']));
     return trim($request, '/');
   }
