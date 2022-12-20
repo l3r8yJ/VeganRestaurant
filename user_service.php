@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user_repository.php';
 
-class AuthService {
+class UserService {
 
   private UserRepository $repository;
 
@@ -32,25 +32,31 @@ class AuthService {
     if($_SERVER['REQUEST_METHOD'] != 'POST') {
       return 'Wrong method.';
     }
+    if ($_POST['action'] != 'registration') {
+      return 'Wrong action';
+    }
     try {
       $user = new User($_POST);
       if(null != $this->repository->byEmail($user->getEmail())) {
         return 'User with this email already exist.';
       }
       $this->repository->create($user);
-    } catch(Exception $ex) {
+    } catch(UserException $ex) {
       return $ex->getMessage();
     }
     return '';
   }
 
-  public function logout() {
-    unset($_SESSION['USER_ID']);
-    return null;
+  public function current(): mixed {
+    if (!$this->isAuthorized()) {
+      return null;
+    }
+    return $this->repository->byId($_SESSION['USER_ID']);
   }
 
-  public function notFound(): string {
-    return 'not found.';
+  public function logout(): mixed {
+    unset($_SESSION['USER_ID']);
+    return null;
   }
 
   private function isAuthorized(): bool {

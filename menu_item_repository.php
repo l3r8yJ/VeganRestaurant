@@ -1,24 +1,21 @@
 <?php
 class MenuItemRepository{
 
-  private $db;
+  private PDO $db;
 
-  function __construct($db)
+  function __construct(PDO $db)
   {
     $this->db = $db;
   }
 
-  function fetchItems()
-  {
-    return $this->db->query(
-      '
+  public function fetchItems(): bool|PDOStatement {
+    return $this->db->query('
       SELECT * FROM menu_item
       INNER JOIN place On place.id=menu_item.place_id;
-      '
-    );
+    ');
   }
 
-  function filtredItems() {
+  public function filteredItems(): bool|array {
     $stmt = $this->db->prepare('
       SELECT * FROM menu_item INNER JOIN place
       ON place.id=menu_item.place_id WHERE
@@ -29,9 +26,16 @@ class MenuItemRepository{
     return $stmt->fetchAll();
   }
 
-  private function anyIfEmpty($field) {
-    if(!isset($field)) {
-      $field = $this->any;
+  public function byId(int $id) {
+    $stmt = $this->db->prepare('SELECT * FROM l2.menu_item 
+    INNER JOIN place p ON menu_item.place_id = p.id
+    WHERE menu_item.id = ? LIMIT 1
+    ');
+    $stmt->execute([$id]);
+    $items = $stmt->fetchAll();
+    if (!count($items)) {
+      return null;
     }
+    return $items[0];
   }
 }

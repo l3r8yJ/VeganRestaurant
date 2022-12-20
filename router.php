@@ -1,11 +1,11 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/auth_service.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user_service.php';
 
 class Router {
 
-  private $service;
+  private UserService $service;
 
-  public function __construct(AuthService $service) {
+  public function __construct(UserService $service) {
     $this->service = $service;
   }
 
@@ -14,7 +14,8 @@ class Router {
       'auth' => $this->service->auth(),
       'registration' => $this->service->registration(),
       'logout' => $this->service->logout(),
-      default => $this->service->notFound(),
+      'current' => $this->service->current(),
+      default => 'not found.',
     };
   }
 

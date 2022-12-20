@@ -17,7 +17,7 @@ class ItemService {
       $result = $this->repository->fetchItems();
     } else {
       $this->prepareGet();
-      $result = $this->repository->filtredItems();
+      $result = $this->repository->filteredItems();
     }
     return $result;
   }

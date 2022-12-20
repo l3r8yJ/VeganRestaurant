@@ -10,7 +10,11 @@ class User {
   private string $bloodType;
   private string $rhesusFactor;
 
-    public function __construct(array $params) {
+  /**
+   * @param array $params the POST.
+   * @throws UserException when empty fields.
+   */
+  public function __construct(array $params) {
     $this->checkParams($params);
     $this->fio = $params['fio'];
     $this->email = $params['email'];
@@ -54,12 +58,18 @@ class User {
     return $this->rhesusFactor;
   }
 
+  /**
+   * @throws UserException when empty fields.
+   */
   private function checkParams(array $params): void {
     foreach($params as $param) {
       $this->checkNull($param);
     }
   }
 
+  /**
+   * @throws UserException when empty fields.
+   */
   private function checkNull(string $field): void {
     if(null == $field) {
       throw new UserException($field . ' not found!');
