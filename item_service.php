@@ -3,10 +3,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/menu_item_repository.php';
 
 class ItemService {
 
-  private $repository;
-  private $any = '%';
+  private MenuItemRepository$repository;
+  private string $any = '%';
 
-  public function __construct($repository) {
+  public function __construct(MenuItemRepository $repository) {
     $this->repository = $repository;
   }
 
@@ -27,7 +27,7 @@ class ItemService {
     $this->anyIfDoesntExist('price');
   }
 
-  private function anyIfDoesntExist($key) {
+  private function anyIfDoesntExist(string $key) {
     if ($_GET[$key] === '') {
         $_GET[$key] = $this->any;
     }

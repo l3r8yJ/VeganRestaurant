@@ -3,18 +3,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/auth_service.php';
 
 class Router {
 
-  private $authService;
+  private $service;
 
-  public function __construct($service) {
-    $this->authService = $service;
+  public function __construct(AuthService $service) {
+    $this->service = $service;
   }
 
   public function handle() {
-    return match($this->request()) {
-      'auth' => $service->auth(),
-      'registration' => $service->registration(),
-      'logout' => $service->logout(),
-      default => $service->notFound(),
+      return match($this->request()) {
+      'auth' => $this->service->auth(),
+      'registration' => $this->service->registration(),
+      'logout' => $this->service->logout(),
+      default => $this->service->notFound(),
     };
   }
 

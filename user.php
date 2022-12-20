@@ -1,20 +1,19 @@
 <?php
 class User {
 
-  private $fio;
-  private $email;
-  private $birthday;
-  private $address;
-  private $sex;
-  private $vk;
-  private $bloodType;
-  private $rhesusFactor;
-  private $isAuthenticated;
+  private string $fio;
+  private string $email;
+  private string $birthday;
+  private string $address;
+  private string $sex;
+  private string $vk;
+  private string $bloodType;
+  private string $rhesusFactor;
 
-  public function __construct($params) {
+    public function __construct(array $params) {
     $this->checkParams($params);
     $this->fio = $params['fio'];
-    $this->fio = $params['email'];
+    $this->email = $params['email'];
     $this->birthday = $params['birthday'];
     $this->address = $params['address'];
     $this->sex = $params['sex'];
@@ -23,43 +22,49 @@ class User {
     $this->rhesusFactor = $params['rhesus_factor'];
   }
 
-  public function getFio() {
+  public function getFio(): string {
     return $this->fio;
   }
 
-  public function getBirthday() {
+  public function getEmail(): string {
+    return $this->email;
+  }
+
+  public function getBirthday(): string {
     return $this->birthday;
   }
 
-  public function getAddress() {
+  public function getAddress(): string {
     return $this->address;
   }
 
-  public function getSex() {
+  public function getSex(): string {
     return $this->sex;
   }
 
-  public function getVk() {
+  public function getVk(): string {
     return $this->vk;
   }
 
-  public function getBloodType() {
+  public function getBloodType(): string {
     return $this->bloodType;
   }
 
-  public function getRhesusFactor() {
+  public function getRhesusFactor(): string {
     return $this->rhesusFactor;
   }
 
-  private function checkParams($params) {
+  private function checkParams(array $params): void {
     foreach($params as $param) {
       $this->checkNull($param);
     }
   }
 
-  private function checkNull($field) {
+  private function checkNull(string $field): void {
     if(null == $field) {
       throw new UserException($field . ' not found!');
     }
   }
 }
+
+class UserException extends Exception { }

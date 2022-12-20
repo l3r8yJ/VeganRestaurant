@@ -4,13 +4,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/user_repository.php';
 
 class AuthService {
 
-  private $repository;
+  private UserRepository $repository;
 
-  public function __construct($repository) {
+  public function __construct(UserRepository $repository) {
     $this->repository = $repository;
   }
 
-  public function auth() {
+  public function auth(): string {
     if($this->isAuthorized()) {
       return 'You already authorized.';
     }
@@ -21,14 +21,14 @@ class AuthService {
     if(null == $user) {
       return 'User with this email doesn\'t exist.';
     }
-    if (password_hash($password, PASSWORD_DEFAULT) != $user['password']) {
+    if (password_hash($_POST['password'], PASSWORD_DEFAULT) != $user['password']) {
       return 'Wrong password.';
     }
     $_SESSION['USER_ID'] = $user['id'];
     return 'authorized!';
   }
 
-  public function registration() {
+  public function registration(): string {
     if($_SERVER['REQUEST_METHOD'] != 'POST') {
       return 'Wrong method.';
     }
@@ -37,23 +37,23 @@ class AuthService {
       if(null != $this->repository->byEmail($user->getEmail())) {
         return 'User with this email already exist.';
       }
-      $this->db->create($user);
+      $this->repository->create($user);
     } catch(Exception $ex) {
       return $ex->getMessage();
     }
+    return '';
   }
 
   public function logout() {
     unset($_SESSION['USER_ID']);
+    return null;
   }
 
-  public function notFound() {
+  public function notFound(): string {
     return 'not found.';
   }
 
-  private function isAuthorized() {
+  private function isAuthorized(): bool {
     return intval($_SESSION['USER_ID']) > 0;
   }
 }
-
-class AuthServiceException extends Exception { }

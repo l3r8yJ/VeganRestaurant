@@ -7,6 +7,7 @@ session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=l2', 'root', 'root');
 $service = new ItemService(new MenuItemRepository($pdo));
 $router = new Router(new AuthService(new UserRepository($pdo)));
+echo $router->handle();
 $items = $service->items();
 ?>
 <!doctype html>
@@ -266,7 +267,6 @@ $items = $service->items();
           <button id="clear-filter-btn" href="" >Очистить фильтр</button>
       </div>
     </form>
-    <?if(count($items)):?>
       <?php foreach ($items as $item):?>
         <div class="card item-container">
           <div class="name">Название: <?=$item['name']?></div>
@@ -276,7 +276,6 @@ $items = $service->items();
           <img src="images/<?=$item['picture']?>" class="picture"/>
         </div>
       <?php endforeach?>
-    <?endif?>
     <footer>
       <div class="footer-container">
         <div class="container text-center">
