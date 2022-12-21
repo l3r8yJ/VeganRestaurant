@@ -504,3 +504,91 @@ ul{
     justify-content: center;
     text-align: center;
 }
+
+.card-container{
+    width: 1000px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.card-top-row-container{
+    height: 100px;
+}
+
+.recepie-text-container{
+    margin: auto;
+    margin-top: 100px;
+    text-align: left;
+}
+
+.card-img-container{
+    width: 400px;
+    height: 300px;
+    border-radius: 30px;
+}
+
+.card-top-row-container{
+    display: flex;
+}
+
+.card-top-row-item{
+    margin: 10px 100px 10px 100px;
+}
+
+#price-card{
+    float: right;
+}
+
+.crud-btn{
+    width: 250px;
+}
+
+.btn-edit-container{
+    margin: auto;
+    margin-top: 20px;
+}
+
+.create-card-btn-container{
+    margin: auto;
+    width: 200px;
+}
+
+.registration-form-container{
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.registration-form-title{
+    text-align: center;
+    font-size: 30px;
+}
+
+.registration-link-button{
+    display: flex;
+    margin-top: 30px;
+}
+
+.registration-button{
+    margin-left: 30px;
+}
+
+#registration-button-text{
+    margin-top: 7px;
+}
+
+.create-article-submit{
+    margin-top: 20px;
+}
+
+.picture-loader-container{
+    width: 1000px;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.change-picture-submit{
+    margin-top: 20px;
+}

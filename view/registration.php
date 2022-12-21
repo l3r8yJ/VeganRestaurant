@@ -26,11 +26,11 @@ $items = $service->items();
     <title>Кашка овсяная с бананом «Nemoloko», 200мл - купить в Москве в
         магазине Сойка</title>
     <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+            crossorigin="anonymous">
+    <link rel="stylesheet" href="<?="../style.css"?>">
 </head>
 <body>
 <header>
@@ -38,8 +38,10 @@ $items = $service->items();
         <div class="row">
             <div class="col-2">
                 <div class="header-logo-container">
-                    <a href=""><img src="images/soyka-logo-11-22.png" alt=""
-                                    id="header-logo"></a>
+                    <a href="/">
+                        <img src="../images/soyka-logo-11-22.png" alt=""
+                                    id="header-logo">
+                    </a>
                 </div>
             </div>
             <div class="col-10">
@@ -47,7 +49,7 @@ $items = $service->items();
 
                   <span class="top-header-icon-item">
                     <a href="">
-                      <img src="images/i-phone.png" alt="" class="header-icon"
+                      <img src="../images/i-phone.png" alt="" class="header-icon"
                            id="i-phone-img">
                         +7 (499) 197-00-17
                     </a>
@@ -55,7 +57,7 @@ $items = $service->items();
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="images/i-label-close.png" alt=""
+                      <img src="../images/i-label-close.png" alt=""
                            class="header-icon" id="i-label-close-img">
                         9-21
                     </a>
@@ -63,7 +65,7 @@ $items = $service->items();
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="images/i-mail.png" alt="" class="header-icon"
+                      <img src="../images/i-mail.png" alt="" class="header-icon"
                            id="i-mail-img">
                       torg@soyka.ru
                     </a>
@@ -71,7 +73,7 @@ $items = $service->items();
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="images/i-cart.png" alt="" class="header-icon"
+                      <img src="../images/i-cart.png" alt="" class="header-icon"
                            id="i-cart-img">
                      <sup>0</sup>
                      <span>0.00</span>
@@ -80,7 +82,7 @@ $items = $service->items();
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="images/i-favorite.png" alt=""
+                      <img src="../images/i-favorite.png" alt=""
                            class="header-icon" id="i-favorite-img">
                      <sup>0</sup>
                      <span>0.00</span>
@@ -89,14 +91,14 @@ $items = $service->items();
 
                     <span class="top-header-icon-item" id="key-item">
                     <a href="/view/auth.php">
-                      <img src="images/i-key.png" alt="" class="header-icon"
+                      <img src="../images/i-key.png" alt="" class="header-icon"
                            id="i-key-img">
                     </a>
                   </span>
 
                     <span class="top-header-icon-item" id="lk-item">
                     <a href="">
-                      <img src="images/lk-icon.png" alt="" class="header-icon"
+                      <img src="../images/lk-icon.png" alt="" class="header-icon"
                            id="lk-icon-img">
                     </a>
                   </span>
@@ -104,7 +106,7 @@ $items = $service->items();
                 <div class="bottom-header-row">
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-vegan.png" alt=""
+                        <img src="../images/i-vegan.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>веган</span>
                       </a>
@@ -112,7 +114,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-fast.png" alt=""
+                        <img src="../images/i-fast.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>пост</span>
                       </a>
@@ -120,7 +122,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-raw-food-eater.png" alt=""
+                        <img src="../images/i-raw-food-eater.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>сыроед</span>
                       </a>
@@ -128,7 +130,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-lose-weight.png" alt=""
+                        <img src="../images/i-lose-weight.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>похудеть</span>
                       </a>
@@ -136,7 +138,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-to-gain-weight.png" alt=""
+                        <img src="../images/i-to-gain-weight.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>набрать вес</span>
                       </a>
@@ -144,7 +146,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-energy.png" alt=""
+                        <img src="../images/i-energy.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>энергия</span>
                       </a>
@@ -152,7 +154,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-for-sleep.png" alt=""
+                        <img src="../images/i-for-sleep.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>для сна</span>
                       </a>
@@ -160,7 +162,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-mood.png" alt=""
+                        <img src="../images/i-mood.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>настроение</span>
                       </a>
@@ -168,7 +170,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-without-soy.png" alt=""
+                        <img src="../images/i-without-soy.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>без сои</span>
                       </a>
@@ -176,7 +178,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-gluten-free.png" alt=""
+                        <img src="../images/i-gluten-free.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>без глютена</span>
                       </a>
@@ -184,7 +186,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-sugarless.png" alt=""
+                        <img src="../images/i-sugarless.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>без сахара</span>
                       </a>
@@ -192,7 +194,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-discounts.png" alt=""
+                        <img src="../images/i-discounts.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>скидки</span>
                       </a>
@@ -200,7 +202,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-novelty.png" alt=""
+                        <img src="../images/i-novelty.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>новинки</span>
                       </a>
@@ -208,7 +210,7 @@ $items = $service->items();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="images/i-bestsellers.png" alt=""
+                        <img src="../images/i-bestsellers.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>хиты продаж</span>
                       </a>
@@ -301,83 +303,67 @@ $items = $service->items();
         </nav>
     </div>
 </header>
-<form action="/" method="get">
-    <div id="filter-container">
-        <label>Введите название блюда</label>
-        <input name="name" class="input-item" type="text"
-               placeholder="Название"></br>
-        <label>Введите стоймость</label>
-        <input name="price" class="input-item" type="text"
-               placeholder="Стоймость"></br>
-        <button type="submit"  class="btn btn-warning" id="apply-filter-btn" name="sub">Применить
-            фильтр
-        </button>
-        <button id="clear-filter-btn" class="btn btn-warning" href="">Очистить фильтр</button>
-    </div>
-</form>
+<div class="registration-form-container">
 
-<div class="create-card-btn-container">
-    <a href="/view/create.php">
-        <button class="btn btn-success">
-            Добавить новый рецепт
-        </button>
-    </a>
+    <div class="registration-form-title">
+        Форма регистрации
+    </div>
+    <form action="/registration.php" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="password_confirm" class="form-label">Confirm password</label>
+            <input name="password_confirm" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="fio" class="form-label">Username</label>
+            <input name="fio" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="birthday" class="form-label">Date of birth</label>
+            <input name="birthday" type="date" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input name="address" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="sex" class="form-label">Gender</label>
+            <select name="sex" id="Select" class="form-select">
+                <option>Mail</option>
+                <option>Femail</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="vk" class="form-label">Link to VK page</label>
+            <input name="vk" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="blood_type" class="form-label">Group type</label>
+            <input name="blood_type" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="rhesus_factor" class="form-label">Rhesus factor</label>
+            <input name="rhesus_factor" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </form>
 </div>
-
-<?php foreach ($items as $item): ?>
-    <div class="card-container card">
-        <div class="card-top-row-container">
-            <div class="card-top-row-item">
-                <?=$item['name']?>
-            </div>
-            <div class="card-top-row-item">
-                <?=$item['place_name']?>
-            </div>
-            <div class="card-top-row-item" id="price-card">
-                <?=$item['price']?> ₽
-            </div>
-        </div>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <div>
-                        <img src="/images/<?=$item['picture']?>" alt="" class="card-img-container">
-                    </div>
-                </div>
-                <div class="col">
-                   <div class="recepie-text-container">
-                       <?=$item['recepie']?>
-                   </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="btn-edit-container">
-            <a href="/view/change-picture.php" >
-                <button class="btn btn-warning crud-btn" >
-                    Изменить фото
-                </button>
-            </a>
-            <a href="/view/edit.php" >
-                <button class="btn btn-warning crud-btn" >
-                    Редактировать
-                </button>
-            </a>
-            <a href="/delete.php" >
-                <button class="btn btn-danger crud-btn" >
-                    Удалить
-                </button>
-            </a>
-        </div>
-    </div>
-<?php endforeach ?>
 <footer>
     <div class="footer-container">
         <div class="container text-center">
             <div class="row">
                 <div class="col-3">
                     <a href="">
-                        <img src="images/footer-logo.png" alt=""
+                        <img src="../images/footer-logo.png" alt=""
                              id="footer-logo-img">
                     </a>
                     <div id="phone-footer">
@@ -579,31 +565,31 @@ $items = $service->items();
                     <div class="methods-payment-container">
                         <div class="payment-row">
                     <span>
-                      <img src="images/visa.png" alt="" id="visa-payment-img">
+                      <img src="../images/visa.png" alt="" id="visa-payment-img">
                     </span>
                             <span>
-                      <img src="images/mastercard.png" alt=""
+                      <img src="../images/mastercard.png" alt=""
                            id="mastercard-payment-img">
                     </span>
                             <span>
-                      <img src="images/paykeeper.png" alt=""
+                      <img src="../images/paykeeper.png" alt=""
                            id="paykeeper-payment-img">
                     </span>
                         </div>
                         <div class="payment-row">
                     <span>
-                      <img src="images/cash.png" alt="" id="cash-payment-img">
+                      <img src="../images/cash.png" alt="" id="cash-payment-img">
                     </span>
                             <span>
-                      <img src="images/sberbank.png" alt=""
+                      <img src="../images/sberbank.png" alt=""
                            id="sberbank-payment-img">
                     </span>
                             <span>
-                      <img src="images/yandex.png" alt=""
+                      <img src="../images/yandex.png" alt=""
                            id="yandex-payment-img">
                     </span>
                             <span>
-                      <img src="images/tinkoff.png" alt=""
+                      <img src="../images/tinkoff.png" alt=""
                            id="tinkoff-payment-img">
                     </span>
                         </div>
@@ -614,18 +600,18 @@ $items = $service->items();
                     <div class="social-media-item-container">
                <span>
                 <a href="">
-                  <img src="images/vk-icon.png" alt="" class="social-item-img">
+                  <img src="../images/vk-icon.png" alt="" class="social-item-img">
                 </a>
                </span>
                         <span>
                 <a href="">
-                  <img src="images/telegram-icon.png" alt=""
+                  <img src="../images/telegram-icon.png" alt=""
                        class="social-item-img">
                 </a>
                </span>
                         <span>
                 <a href="">
-                  <img src="images/youtube.png" alt="" class="social-item-img">
+                  <img src="../images/youtube.png" alt="" class="social-item-img">
                 </a>
                </span>
                     </div>
@@ -659,8 +645,8 @@ $items = $service->items();
     </div>
 </footer>
 <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
 </body>
 </html>
