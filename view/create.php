@@ -1,23 +1,16 @@
 <?php
-
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/item/ItemService.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/item/ItemRepository.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/place/PlaceRepository.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserRouter.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SingletonConnection.php';
-
-$service = new ItemService(
-  new ItemRepository(
-    SingletonConnection::connection()
-  )
-);
 $router = new UserRouter(
   new UserService(
     new UserRepository(SingletonConnection::connection())
   )
 );
 $router->handle();
-$items = $service->items();
+$repo = new PlaceRepository(SingletonConnection::connection());
+$places = $repo->fetchPlaces();
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,10 +20,10 @@ $items = $service->items();
     <title>Кашка овсяная с бананом «Nemoloko», 200мл - купить в Москве в
         магазине Сойка</title>
     <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-            crossorigin="anonymous">
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="<?= "../style.css" ?>">
 </head>
 <body>
@@ -50,7 +43,8 @@ $items = $service->items();
 
                   <span class="top-header-icon-item">
                     <a href="">
-                      <img src="../images/i-phone.png" alt="" class="header-icon"
+                      <img src="../images/i-phone.png" alt=""
+                           class="header-icon"
                            id="i-phone-img">
                         +7 (499) 197-00-17
                     </a>
@@ -99,7 +93,8 @@ $items = $service->items();
 
                     <span class="top-header-icon-item" id="lk-item">
                     <a href="">
-                      <img src="../images/lk-icon.png" alt="" class="header-icon"
+                      <img src="../images/lk-icon.png" alt=""
+                           class="header-icon"
                            id="lk-icon-img">
                     </a>
                   </span>
@@ -305,31 +300,38 @@ $items = $service->items();
     </div>
 </header>
 <div class="registration-form-container">
-
     <div class="articleAdd-form-container">
         <form method="post" action="/create.php">
             <div class="form-group">
                 <label for="name"> Название </label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Название">
+                <input name="name" type="text" class="form-control"
+                       id="exampleFormControlInput1" placeholder="Название">
             </div>
             <div class="form-group">
                 <label for="">Цена</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Цена">
+                <input name="price" type="number" class="form-control"
+                       id="exampleFormControlInput1" placeholder="Цена">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Место хранения</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option> </option>
+                <select name="place_name" class="form-control" id="exampleFormControlSelect1">
+                    <?php foreach($places as $place):?>
+                    <option><?=$place['place_name']?></option>
+                    <?php endforeach;?>
                 </select>
             </div>
-
             <div class="form-group">
                 <label for="text">Рецепт</label>
-                <textarea name="recepie" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea name="recepie" class="form-control"
+                          id="exampleFormControlTextarea1" rows="3">
+
+                </textarea>
             </div>
 
             <div class="create-article-submit">
-                <button type="submit" class="btn btn-primary mb-2 "> Добавить рецепт</button>
+                <button type="submit" class="btn btn-primary mb-2 "> Добавить
+                    рецепт
+                </button>
             </div>
 
         </form>
@@ -544,7 +546,8 @@ $items = $service->items();
                     <div class="methods-payment-container">
                         <div class="payment-row">
                     <span>
-                      <img src="../images/visa.png" alt="" id="visa-payment-img">
+                      <img src="../images/visa.png" alt=""
+                           id="visa-payment-img">
                     </span>
                             <span>
                       <img src="../images/mastercard.png" alt=""
@@ -557,7 +560,8 @@ $items = $service->items();
                         </div>
                         <div class="payment-row">
                     <span>
-                      <img src="../images/cash.png" alt="" id="cash-payment-img">
+                      <img src="../images/cash.png" alt=""
+                           id="cash-payment-img">
                     </span>
                             <span>
                       <img src="../images/sberbank.png" alt=""
@@ -579,7 +583,8 @@ $items = $service->items();
                     <div class="social-media-item-container">
                <span>
                 <a href="">
-                  <img src="../images/vk-icon.png" alt="" class="social-item-img">
+                  <img src="../images/vk-icon.png" alt=""
+                       class="social-item-img">
                 </a>
                </span>
                         <span>
@@ -590,7 +595,8 @@ $items = $service->items();
                </span>
                         <span>
                 <a href="">
-                  <img src="../images/youtube.png" alt="" class="social-item-img">
+                  <img src="../images/youtube.png" alt=""
+                       class="social-item-img">
                 </a>
                </span>
                     </div>
@@ -624,8 +630,8 @@ $items = $service->items();
     </div>
 </footer>
 <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
 </body>
 </html>

@@ -3,13 +3,13 @@
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/item/ItemService.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/item/ItemRepository.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/place/PlaceRepository.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserRouter.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SingletonConnection.php';
 
 $service = new ItemService(
-  new ItemRepository(
-    SingletonConnection::connection()
-  )
+  new ItemRepository(SingletonConnection::connection()),
+  new PlaceRepository(SingletonConnection::connection())
 );
 $router = new UserRouter(
   new UserService(

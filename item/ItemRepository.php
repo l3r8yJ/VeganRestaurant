@@ -27,28 +27,26 @@ class ItemRepository {
     return $stmt->fetchAll();
   }
 
-  public function byId(int $id) {
+  public function byId(int $id): mixed {
     $stmt = $this->db->prepare('SELECT * FROM l2.menu_item 
     INNER JOIN place p ON menu_item.place_id = p.id
-    WHERE menu_item.id = ? LIMIT 1
+    WHERE menu_item.id_item = ? LIMIT 1
     ');
     $stmt->execute([$id]);
     $items = $stmt->fetchAll();
-    if (!count($items)) {
-      return null;
-    }
-    return $items[0];
+    return $this->nullIfEmpty($items);
   }
 
   public function create(array $post): bool {
-    return $this->db->prepare('
+    $stmt =  $this->db->prepare('
       INSERT INTO l2.menu_item (name, price, recepie, picture, place_id) 
       VALUES (?, ?, ?, ?, ?)
-    ')->execute([
+    ');
+    return $stmt->execute([
       $post['name'],
       $post['price'],
       $post['recepie'],
-      $post['picture'],
+      null,
       $post['place_id']
     ]);
   }
@@ -56,14 +54,27 @@ class ItemRepository {
   public function edit(array $post): bool {
     $stmt = $this->db->prepare('
         UPDATE l2.menu_item
-        SET name = ?, price = ? , recepie = ?, place_id =?
-        WHERE id = ?
+        SET name = ?, price = ? , recepie = ?, place_id = ?
+        WHERE id_item = ?
     ');
     return $stmt->execute([
       $post['name'],
       $post['price'],
       $post['recepie'],
-      $post['place_id']
+      $post['place_id'],
+      $post['id_item']
     ]);
+  }
+
+  public function delete(int $id): bool {
+    $stmt = $this->db->prepare('DELETE FROM l2.menu_item WHERE id_item = ?');
+    return $stmt->execute([$id]);
+  }
+
+  private function nullIfEmpty(bool|array $items): mixed {
+    if (!count($items)) {
+      return null;
+    }
+    return $items[0];
   }
 }

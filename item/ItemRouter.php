@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . 'Router.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Router.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/item/ItemService.php';
 
 class ItemRouter extends Router {
