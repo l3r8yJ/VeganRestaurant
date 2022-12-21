@@ -6,9 +6,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserRouter.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/SingletonConnection.php';
 
 $service = new ItemService(
-  new ItemRepository(
-    SingletonConnection::connection()
-  )
+  new ItemRepository(SingletonConnection::connection()),
+  new PlaceRepository(SingletonConnection::connection())
 );
 $router = new UserRouter(
   new UserService(
@@ -309,10 +308,13 @@ $items = $service->items();
         <label>Введите стоймость</label>
         <input name="price" class="input-item" type="text"
                placeholder="Стоймость"></br>
-        <button type="submit"  class="btn btn-warning" id="apply-filter-btn" name="sub">Применить
+        <button type="submit" class="btn btn-warning" id="apply-filter-btn"
+                name="sub">Применить
             фильтр
         </button>
-        <button id="clear-filter-btn" class="btn btn-warning" href="">Очистить фильтр</button>
+        <button id="clear-filter-btn" class="btn btn-warning" href="">Очистить
+            фильтр
+        </button>
     </div>
 </form>
 
@@ -328,43 +330,44 @@ $items = $service->items();
     <div class="card-container card">
         <div class="card-top-row-container">
             <div class="card-top-row-item">
-                <?=$item['name']?>
+              <?= htmlspecialchars($item['name']) ?>
             </div>
             <div class="card-top-row-item">
-                <?=$item['place_name']?>
+              <?= $item['place_name'] ?>
             </div>
             <div class="card-top-row-item" id="price-card">
-                <?=$item['price']?> ₽
+              <?= htmlspecialchars($item['price']) ?> ₽
             </div>
         </div>
         <div class="container text-center">
             <div class="row">
                 <div class="col">
                     <div>
-                        <img src="/images/<?=$item['picture']?>" alt="" class="card-img-container">
+                        <img src="/images/<?= $item['picture'] ?>" alt=""
+                             class="card-img-container">
                     </div>
                 </div>
                 <div class="col">
-                   <div class="recepie-text-container">
-                       <?=$item['recepie']?>
-                   </div>
+                    <div class="recepie-text-container">
+                      <?= htmlspecialchars($item['recepie']) ?>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="btn-edit-container">
-            <a href="/view/change-picture.php" >
-                <button class="btn btn-warning crud-btn" >
+            <a href="/view/change-picture.php?id=<?=$item['id_item']?>">
+                <button class="btn btn-warning crud-btn">
                     Изменить фото
                 </button>
             </a>
-            <a href="/view/edit.php" >
-                <button class="btn btn-warning crud-btn" >
+            <a href="/view/edit.php?id=<?= $item['id_item'] ?>">
+                <button class="btn btn-warning crud-btn">
                     Редактировать
                 </button>
             </a>
-            <a href="/delete.php" >
-                <button class="btn btn-danger crud-btn" >
+            <a href="/delete.php?id=<?= $item['id_item'] ?>">
+                <button class="btn btn-danger crud-btn">
                     Удалить
                 </button>
             </a>
