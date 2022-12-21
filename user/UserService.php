@@ -1,6 +1,6 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user/AuthUser.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user/User.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserException.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserRepository.php';
 
 class UserService {
@@ -12,40 +12,39 @@ class UserService {
   }
 
   public function auth(): string {
+    $auth = new AuthUser($_POST);
     if($this->isAuthorized()) {
-      return 'You already authorized.';
+      return 'you already authorized';
     }
     if($_SERVER['REQUEST_METHOD'] != 'POST') {
-      return 'Wrong method.';
+      return 'wrong method';
     }
-    $user = $this->repository->byEmail($_POST['email']);
+    $user = $this->repository->byEmail($auth->getEmail());
     if(null == $user) {
       return 'User with this email doesn\'t exist.';
     }
-    if (password_hash($_POST['password'], PASSWORD_DEFAULT) != $user['password']) {
-      return 'Wrong password.';
+    if ($auth->getPassword() != $user['password']) {
+      return 'wrong password';
     }
     $_SESSION['USER_ID'] = $user['id'];
-    return 'authorized!';
+    return 'authorized';
   }
 
   public function registration(): string {
     if($_SERVER['REQUEST_METHOD'] != 'POST') {
-      return 'Wrong method.';
-    }
-    if ($_POST['action'] != 'registration') {
-      return 'Wrong action';
+      return 'wrong method';
     }
     try {
       $user = new User($_POST);
       if(null != $this->repository->byEmail($user->getEmail())) {
-        return 'User with this email already exist.';
+        return 'User with this email already exist';
       }
       $this->repository->create($user);
-    } catch(UserException $ex) {
+      $_SESSION['USER_ID'] = $this->repository->byEmail($_POST['email']);
+    } catch(Exception $ex) {
       return $ex->getMessage();
     }
-    return '';
+    return 'success';
   }
 
   public function current(): mixed {
@@ -61,6 +60,6 @@ class UserService {
   }
 
   private function isAuthorized(): bool {
-    return intval($_SESSION['USER_ID']) > 0;
+    return isset($_SESSION['USER_ID']);
   }
 }

@@ -1,23 +1,3 @@
-<?php
-session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/item/ItemService.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/item/ItemRepository.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserRouter.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/SingletonConnection.php';
-
-$service = new ItemService(
-  new ItemRepository(
-    SingletonConnection::connection()
-  )
-);
-$router = new UserRouter(
-  new UserService(
-    new UserRepository(SingletonConnection::connection())
-  )
-);
-$router->handle();
-$items = $service->items();
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,11 +6,11 @@ $items = $service->items();
     <title>Кашка овсяная с бананом «Nemoloko», 200мл - купить в Москве в
         магазине Сойка</title>
     <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-            crossorigin="anonymous">
-    <link rel="stylesheet" href="<?="../style.css"?>">
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= "../style.css" ?>">
 </head>
 <body>
 <header>
@@ -40,7 +20,7 @@ $items = $service->items();
                 <div class="header-logo-container">
                     <a href="/">
                         <img src="../images/soyka-logo-11-22.png" alt=""
-                                    id="header-logo">
+                             id="header-logo">
                     </a>
                 </div>
             </div>
@@ -49,7 +29,8 @@ $items = $service->items();
 
                   <span class="top-header-icon-item">
                     <a href="">
-                      <img src="../images/i-phone.png" alt="" class="header-icon"
+                      <img src="../images/i-phone.png" alt=""
+                           class="header-icon"
                            id="i-phone-img">
                         +7 (499) 197-00-17
                     </a>
@@ -90,7 +71,7 @@ $items = $service->items();
                   </span>
 
                     <span class="top-header-icon-item" id="key-item">
-                    <a href="/view/auth.php">
+                    <a href="/view/auth-view.php">
                       <img src="../images/i-key.png" alt="" class="header-icon"
                            id="i-key-img">
                     </a>
@@ -98,7 +79,8 @@ $items = $service->items();
 
                     <span class="top-header-icon-item" id="lk-item">
                     <a href="">
-                      <img src="../images/lk-icon.png" alt="" class="header-icon"
+                      <img src="../images/lk-icon.png" alt=""
+                           class="header-icon"
                            id="lk-icon-img">
                     </a>
                   </span>
@@ -311,50 +293,63 @@ $items = $service->items();
     <form action="/registration.php" method="post">
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <input name="email" type="email" class="form-control"
+                   id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email
+                with anyone else.
+            </div>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            <input name="password" type="password" class="form-control"
+                   id="exampleInputPassword1">
         </div>
         <div class="mb-3">
-            <label for="password_confirm" class="form-label">Confirm password</label>
-            <input name="password_confirm" type="password" class="form-control" id="exampleInputPassword1">
+            <label for="password_confirm" class="form-label">Confirm
+                password</label>
+            <input name="password_confirm" type="password" class="form-control"
+                   id="exampleInputPassword1">
         </div>
         <div class="mb-3">
             <label for="fio" class="form-label">Username</label>
-            <input name="fio" type="text" class="form-control" id="exampleInputPassword1">
+            <input name="fio" type="text" class="form-control"
+                   id="exampleInputPassword1">
         </div>
         <div class="mb-3">
             <label for="birthday" class="form-label">Date of birth</label>
-            <input name="birthday" type="date" class="form-control" id="exampleInputPassword1">
+            <input name="birthday" type="date" class="form-control"
+                   id="exampleInputPassword1">
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input name="address" type="text" class="form-control" id="exampleInputPassword1">
+            <input name="address" type="text" class="form-control"
+                   id="exampleInputPassword1">
         </div>
         <div class="mb-3">
             <label for="sex" class="form-label">Gender</label>
             <select name="sex" id="Select" class="form-select">
                 <option>Mail</option>
-                <option>Femail</option>
+                <option>Female</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="vk" class="form-label">Link to VK page</label>
-            <input name="vk" type="text" class="form-control" id="exampleInputPassword1">
+            <input name="vk" type="text" class="form-control"
+                   id="exampleInputPassword1">
         </div>
         <div class="mb-3">
             <label for="blood_type" class="form-label">Group type</label>
-            <input name="blood_type" type="text" class="form-control" id="exampleInputPassword1">
+            <input name="blood_type" type="text" class="form-control"
+                   id="exampleInputPassword1">
         </div>
         <div class="mb-3">
             <label for="rhesus_factor" class="form-label">Rhesus factor</label>
-            <input name="rhesus_factor" type="text" class="form-control" id="exampleInputPassword1">
+            <input name="rhesus_factor" type="text" class="form-control"
+                   id="exampleInputPassword1">
         </div>
 
-        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться
+        </button>
     </form>
 </div>
 <footer>
@@ -565,7 +560,8 @@ $items = $service->items();
                     <div class="methods-payment-container">
                         <div class="payment-row">
                     <span>
-                      <img src="../images/visa.png" alt="" id="visa-payment-img">
+                      <img src="../images/visa.png" alt=""
+                           id="visa-payment-img">
                     </span>
                             <span>
                       <img src="../images/mastercard.png" alt=""
@@ -578,7 +574,8 @@ $items = $service->items();
                         </div>
                         <div class="payment-row">
                     <span>
-                      <img src="../images/cash.png" alt="" id="cash-payment-img">
+                      <img src="../images/cash.png" alt=""
+                           id="cash-payment-img">
                     </span>
                             <span>
                       <img src="../images/sberbank.png" alt=""
@@ -600,7 +597,8 @@ $items = $service->items();
                     <div class="social-media-item-container">
                <span>
                 <a href="">
-                  <img src="../images/vk-icon.png" alt="" class="social-item-img">
+                  <img src="../images/vk-icon.png" alt=""
+                       class="social-item-img">
                 </a>
                </span>
                         <span>
@@ -611,7 +609,8 @@ $items = $service->items();
                </span>
                         <span>
                 <a href="">
-                  <img src="../images/youtube.png" alt="" class="social-item-img">
+                  <img src="../images/youtube.png" alt=""
+                       class="social-item-img">
                 </a>
                </span>
                     </div>
@@ -645,8 +644,8 @@ $items = $service->items();
     </div>
 </footer>
 <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
 </body>
 </html>

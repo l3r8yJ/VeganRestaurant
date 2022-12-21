@@ -92,7 +92,7 @@ $items = $service->items();
                   </span>
 
                     <span class="top-header-icon-item" id="key-item">
-                    <a href="/view/auth.php">
+                    <a href="/view/auth-view.php">
                       <img src="../images/i-key.png" alt="" class="header-icon"
                            id="i-key-img">
                     </a>

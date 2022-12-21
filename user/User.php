@@ -1,11 +1,10 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserException.php';
-
 class User {
 
   private string $fio;
   private string $email;
+  private string $password;
   private string $birthday;
   private string $address;
   private string $sex;
@@ -15,12 +14,11 @@ class User {
 
   /**
    * @param array $params the POST.
-   * @throws UserException when empty fields.
    */
   public function __construct(array $params) {
-    $this->checkParams($params);
     $this->fio = $params['fio'];
     $this->email = $params['email'];
+    $this->password = $params['password'];
     $this->birthday = $params['birthday'];
     $this->address = $params['address'];
     $this->sex = $params['sex'];
@@ -61,21 +59,7 @@ class User {
     return $this->rhesusFactor;
   }
 
-  /**
-   * @throws UserException when empty fields.
-   */
-  private function checkParams(array $params): void {
-    foreach($params as $param) {
-      $this->checkNull($param);
-    }
-  }
-
-  /**
-   * @throws UserException when empty fields.
-   */
-  private function checkNull(string $field): void {
-    if(null == $field) {
-      throw new UserException($field . ' not found!');
-    }
+  public function getPassword() {
+    return $this->password;
   }
 }
