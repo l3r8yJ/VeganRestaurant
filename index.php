@@ -330,13 +330,13 @@ $items = $service->items();
     <div class="card-container card">
         <div class="card-top-row-container">
             <div class="card-top-row-item">
-              <?= $item['name'] ?>
+              <?= htmlspecialchars($item['name']) ?>
             </div>
             <div class="card-top-row-item">
               <?= $item['place_name'] ?>
             </div>
             <div class="card-top-row-item" id="price-card">
-              <?= $item['price'] ?> ₽
+              <?= htmlspecialchars($item['price']) ?> ₽
             </div>
         </div>
         <div class="container text-center">
@@ -349,14 +349,14 @@ $items = $service->items();
                 </div>
                 <div class="col">
                     <div class="recepie-text-container">
-                      <?= $item['recepie'] ?>
+                      <?= htmlspecialchars($item['recepie']) ?>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="btn-edit-container">
-            <a href="/view/change-picture.php">
+            <a href="/view/change-picture.php?id=<?=$item['id_item']?>">
                 <button class="btn btn-warning crud-btn">
                     Изменить фото
                 </button>

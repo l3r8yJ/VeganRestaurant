@@ -44,6 +44,11 @@ class ItemService {
     return $this->itemRepository->byId($id);
   }
 
+  public function changePicture(): bool {
+    $new = $this->uploadPicture();
+    return $this->itemRepository->changePicture($new, $_POST['id']);
+  }
+
   private function prepareGet(): void {
     $this->anyIfNotExist('name');
     $this->anyIfNotExist('price');
@@ -59,5 +64,21 @@ class ItemService {
 
   private function putPlaceId(): void {
     $_POST['place_id'] = $this->placeRepository->idByName($_POST['place_name']);
+  }
+
+  /**
+   * @return string uploaded filename
+   */
+  public function uploadPicture(): string {
+    $name = $_FILES['picture-input']['name'];
+    $target = $_SERVER['DOCUMENT_ROOT'] . '/images/';
+    $new = md5($_POST['id']) . pathinfo($name, PATHINFO_EXTENSION);
+    if (file_exists($target . $new)) {
+      unlink($target . $new);
+    }
+    if (!move_uploaded_file($_FILES['picture-input']['tmp_name'], $target . $new)) {
+      echo "File not loaded.";
+    }
+    return $new;
   }
 }

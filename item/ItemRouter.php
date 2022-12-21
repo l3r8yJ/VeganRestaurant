@@ -22,6 +22,7 @@ class ItemRouter extends Router {
       'create' => $this->service->create(),
       'edit' => $this->service->edit(),
       'delete' => $this->service->delete(),
+      'change-picture' => $this->service->changePicture(),
       default => 'not found',
     };
   }

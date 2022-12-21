@@ -316,7 +316,7 @@ $places = $repo->fetchPlaces();
                 <label for="exampleFormControlSelect1">Место хранения</label>
                 <select name="place_name" class="form-control" id="exampleFormControlSelect1">
                     <?php foreach($places as $place):?>
-                    <option><?=$place['place_name']?></option>
+                    <option><?=htmlspecialchars($place['place_name'])?></option>
                     <?php endforeach;?>
                 </select>
             </div>

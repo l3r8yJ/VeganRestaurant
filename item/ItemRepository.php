@@ -71,6 +71,14 @@ class ItemRepository {
     return $stmt->execute([$id]);
   }
 
+  public function changePicture(string $path, int $id): bool {
+    $stmt = $this->db->prepare('
+      UPDATE l2.menu_item
+      SET picture = ? WHERE id_item = ?
+    ');
+    return $stmt->execute([$path, $id]);
+  }
+
   private function nullIfEmpty(bool|array $items): mixed {
     if (!count($items)) {
       return null;

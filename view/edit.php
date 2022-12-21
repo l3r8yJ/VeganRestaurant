@@ -7,14 +7,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/item/ItemRepository.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserRouter.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/place/PlaceRepository.php';
 
-$pRep = new PlaceRepository(SingletonConnection::connection());
 $iRep = new ItemRepository(SingletonConnection::connection());
-$service = new ItemService($iRep, $pRep);
+$pRep = new PlaceRepository(SingletonConnection::connection());
+$service = new ItemService(
+  $iRep,
+  $pRep
+);
 $router = new UserRouter(
   new UserService(new UserRepository(SingletonConnection::connection()))
 );
 $router->handle();
-$items = $service->items();
 ?>
 <!doctype html>
 <html lang="en">
@@ -310,14 +312,14 @@ $items = $service->items();
             <div class="form-group">
                 <label for="name"> Название </label>
                 <input name="name" type="text" class="form-control"
-                       value="<?= $service->byId(intval($_GET['id']))['name'] ?>"
+                       value="<?= htmlspecialchars($service->byId(intval($_GET['id']))['name']) ?>"
                        id="exampleFormControlInput1"
                        placeholder="Название">
             </div>
             <div class="form-group">
                 <label for="">Цена</label>
                 <input name="price" type="number" class="form-control"
-                       value="<?= $service->byId(intval($_GET['id']))['price'] ?>"
+                       value="<?= htmlspecialchars($service->byId(intval($_GET['id']))['price']) ?>"
                        id="exampleFormControlInput1"
                        placeholder="Цена">
             </div>
@@ -326,8 +328,12 @@ $items = $service->items();
                 <select name="place_name" class="form-control"
                         id="exampleFormControlSelect1">
                   <?php foreach ($pRep->fetchPlaces() as $place): ?>
-                      <option
-                          value="<?= $service->byId(intval($_GET['id']))['place_name'] ?>"><?= $place['place_name'] ?>
+                    <?php if ($place['place_name'] == htmlspecialchars($service->byId(intval($_GET['id']))['place_name'])): ?>
+                          <option selected="true">
+                    <?php else: ?>
+                          <option>
+                    <?php endif; ?>
+                    <?= htmlspecialchars($place['place_name']) ?>
                       </option>
                   <?php endforeach; ?>
                 </select>
@@ -337,7 +343,7 @@ $items = $service->items();
                 <label for="text">Рецепт</label>
                 <textarea name="recepie" class="form-control"
                           id="exampleFormControlTextarea1" rows="3">
-                    <?= $service->byId(intval($_GET['id']))['recepie'] ?>
+                    <?= htmlspecialchars($service->byId(intval($_GET['id']))['recepie']) ?>
                 </textarea>
             </div>
 
@@ -346,7 +352,7 @@ $items = $service->items();
                     рецепт
                 </button>
             </div>
-            <input type="hidden" name="id_item" value="<?=$_GET['id']?>"/>
+            <input type="hidden" name="id_item" value="<?= $_GET['id'] ?>"/>
         </form>
     </div>
 
