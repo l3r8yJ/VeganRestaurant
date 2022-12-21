@@ -82,9 +82,9 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `fio` varchar(20) DEFAULT NULL,
-  `email` varchar(20) DEFAULT NULL,
-  `password` varchar(40) DEFAULT NULL,
-  `vk` datetime DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(60) DEFAULT NULL,
+  `vk` varchar(50) DEFAULT NULL,
   `blood_type` varchar(10) DEFAULT NULL,
   `rhesus_factor` varchar(10) DEFAULT NULL,
   `sex` varchar(30) DEFAULT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `user` (
   `birthday` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +101,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (6,'zxccczxc','clicker.heroes.acg@gmail.com','penis1488','dasdasd','aa','+','Female','asdasdasdas','2022-12-07 00:00:00');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -113,4 +114,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-21 14:31:29
+-- Dump completed on 2022-12-22  2:55:12
