@@ -1,17 +1,3 @@
-<?php
-session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/place/PlaceRepository.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserRouter.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/SingletonConnection.php';
-$router = new UserRouter(
-  new UserService(
-    new UserRepository(SingletonConnection::connection())
-  )
-);
-$router->handle();
-$repo = new PlaceRepository(SingletonConnection::connection());
-$places = $repo->fetchPlaces();
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -300,41 +286,33 @@ $places = $repo->fetchPlaces();
     </div>
 </header>
 <div class="registration-form-container">
-    <div class="articleAdd-form-container">
-        <form method="post" action="/create.php">
-            <div class="form-group">
-                <label for="name"> Название </label>
-                <input name="name" type="text" class="form-control"
-                       id="exampleFormControlInput1" placeholder="Название">
-            </div>
-            <div class="form-group">
-                <label for="">Цена</label>
-                <input name="price" type="number" class="form-control"
-                       id="exampleFormControlInput1" placeholder="Цена">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Место хранения</label>
-                <select name="place_name" class="form-control" id="exampleFormControlSelect1">
-                    <?php foreach($places as $place):?>
-                    <option><?=htmlspecialchars($place['place_name'])?></option>
-                    <?php endforeach;?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="text">Рецепт</label>
-                <textarea name="recepie" class="form-control"
-                          id="exampleFormControlTextarea1" rows="3">
+    <div class="registration-form-title">
+        Авторизация
+    </div>
+    <form method="post" action="/auth.php">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Логин</label>
+            <input name="email" type="email" class="form-control"
+                   id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Пароль</label>
+            <input name="password" type="password" class="form-control"
+                   id="exampleInputPassword1">
+        </div>
 
-                </textarea>
-            </div>
+        <button type="submit" class="btn btn-primary">Войти</button>
 
-            <div class="create-article-submit">
-                <button type="submit" class="btn btn-primary mb-2 "> Добавить
-                    рецепт
-                </button>
-            </div>
-
-        </form>
+    </form>
+    <div class="registration-link-button">
+        <div id="registration-button-text">
+            У вас еще нет аккаунта?
+        </div>
+        <a href="/view/registration-view.php">
+            <button class="btn btn-primary registration-button">
+                Зарегистрироваться
+            </button>
+        </a>
     </div>
 
 </div>

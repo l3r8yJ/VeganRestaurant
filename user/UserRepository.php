@@ -22,7 +22,7 @@ class UserRepository {
     ')->execute([
       $user->getFio(),
       $user->getEmail(),
-      password_hash($user->getPassword(), PASSWORD_DEFAULT),
+      $user->getPassword(),
       $user->getBirthday(),
       $user->getVk(),
       $user->getBloodType(),
@@ -36,7 +36,7 @@ class UserRepository {
     $stmt = $this->db->prepare(
       'SELECT * FROM l2.user WHERE ' . $key . ' = ? LIMIT 1'
     );
-    $stmt->execute($value);
+    $stmt->execute([$value]);
     $users = $stmt->fetchAll();
     if (!count($users)) {
       return null;
