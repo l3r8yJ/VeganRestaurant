@@ -1,8 +1,9 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/index-init.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/items_init.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . "/view/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user-init.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/view/header.php';
 ?>
-
 <div class="picture-loader-container">
     <form enctype="multipart/form-data" method="post"
           action="/change-picture.php">
@@ -20,7 +21,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/view/header.php";
     </form>
 </div>
 
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/view/footer.php"?>
-
-
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/view/footer.php'; ?>
 

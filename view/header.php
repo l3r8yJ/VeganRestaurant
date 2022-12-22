@@ -24,7 +24,7 @@
               <?php if (isset($_SESSION['USER_ID'])): ?>
                   <div class="user-preview-container">
                       <div class="username-container">
-                        <?= $router->handle('current')['fio'] ?>
+                        <?= $userRouter->handle('current')['fio'] ?>
                       </div>
                       <div class="logout-btn-container">
                           <a href="/logout.php">

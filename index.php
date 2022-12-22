@@ -9,12 +9,12 @@ $service = new ItemService(
   new ItemRepository(SingletonConnection::connection()),
   new PlaceRepository(SingletonConnection::connection())
 );
-$router = new UserRouter(
+$userRouter = new UserRouter(
   new UserService(
     new UserRepository(SingletonConnection::connection())
   )
 );
-$router->handle();
+$userRouter->handle();
 $items = $service->items();
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/view/index-view.php';

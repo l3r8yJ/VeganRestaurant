@@ -1,5 +1,8 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/view/header.php"?>
-
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/index-init.php';?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/user-init.php";?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/view/header.php";
+var_dump($_SESSION);
+?>
 <?php if (isset($_SESSION['USER_ID'])):?>
 <form action="/" method="get">
     <div id="filter-container">
@@ -21,7 +24,7 @@
 
 
 <div class="create-card-btn-container">
-    <a href="/view/create.php">
+    <a href="/view/create-view.php">
         <button class="btn btn-success">
             Добавить новый рецепт
         </button>
@@ -58,12 +61,12 @@
         </div>
 
         <div class="btn-edit-container">
-            <a href="/view/change-picture.php?id=<?=$item['id_item']?>">
+            <a href="/view/change-picture-view.php?id=<?=$item['id_item']?>">
                 <button class="btn btn-warning crud-btn">
                     Изменить фото
                 </button>
             </a>
-            <a href="/view/edit.php?id=<?= $item['id_item'] ?>">
+            <a href="/view/edit-view.php?id=<?= $item['id_item'] ?>">
                 <button class="btn btn-warning crud-btn">
                     Редактировать
                 </button>

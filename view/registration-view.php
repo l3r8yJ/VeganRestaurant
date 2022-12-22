@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/index-init.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/user-init.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/view/header.php";
 ?>
 
