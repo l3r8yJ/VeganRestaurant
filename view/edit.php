@@ -39,7 +39,7 @@ $router->handle();
             <div class="col-2">
                 <div class="header-logo-container">
                     <a href="/">
-                        <img src="../images/soyka-logo-11-22.png" alt=""
+                        <img src="images/soyka-logo-11-22.png" alt=""
                              id="header-logo">
                     </a>
                 </div>
@@ -49,7 +49,7 @@ $router->handle();
 
                   <span class="top-header-icon-item">
                     <a href="">
-                      <img src="../images/i-phone.png" alt=""
+                      <img src="images/i-phone.png" alt=""
                            class="header-icon"
                            id="i-phone-img">
                         +7 (499) 197-00-17
@@ -58,7 +58,7 @@ $router->handle();
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="../images/i-label-close.png" alt=""
+                      <img src="images/i-label-close.png" alt=""
                            class="header-icon" id="i-label-close-img">
                         9-21
                     </a>
@@ -66,7 +66,7 @@ $router->handle();
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="../images/i-mail.png" alt="" class="header-icon"
+                      <img src="images/i-mail.png" alt="" class="header-icon"
                            id="i-mail-img">
                       torg@soyka.ru
                     </a>
@@ -74,7 +74,7 @@ $router->handle();
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="../images/i-cart.png" alt="" class="header-icon"
+                      <img src="images/i-cart.png" alt="" class="header-icon"
                            id="i-cart-img">
                      <sup>0</sup>
                      <span>0.00</span>
@@ -83,7 +83,7 @@ $router->handle();
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="../images/i-favorite.png" alt=""
+                      <img src="images/i-favorite.png" alt=""
                            class="header-icon" id="i-favorite-img">
                      <sup>0</sup>
                      <span>0.00</span>
@@ -92,14 +92,14 @@ $router->handle();
 
                     <span class="top-header-icon-item" id="key-item">
                     <a href="/view/auth-view.php">
-                      <img src="../images/i-key.png" alt="" class="header-icon"
+                      <img src="images/i-key.png" alt="" class="header-icon"
                            id="i-key-img">
                     </a>
                   </span>
 
                     <span class="top-header-icon-item" id="lk-item">
                     <a href="">
-                      <img src="../images/lk-icon.png" alt=""
+                      <img src="images/lk-icon.png" alt=""
                            class="header-icon"
                            id="lk-icon-img">
                     </a>
@@ -108,7 +108,7 @@ $router->handle();
                 <div class="bottom-header-row">
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-vegan.png" alt=""
+                        <img src="images/i-vegan.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>веган</span>
                       </a>
@@ -116,7 +116,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-fast.png" alt=""
+                        <img src="images/i-fast.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>пост</span>
                       </a>
@@ -124,7 +124,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-raw-food-eater.png" alt=""
+                        <img src="images/i-raw-food-eater.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>сыроед</span>
                       </a>
@@ -132,7 +132,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-lose-weight.png" alt=""
+                        <img src="images/i-lose-weight.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>похудеть</span>
                       </a>
@@ -140,7 +140,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-to-gain-weight.png" alt=""
+                        <img src="images/i-to-gain-weight.png" alt=""
                              class="bottom-menu-img"></br>
                           <span>набрать вес</span>
                       </a>
@@ -148,7 +148,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-energy.png" alt=""
+                        <img src="images/i-energy.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>энергия</span>
                       </a>
@@ -156,7 +156,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-for-sleep.png" alt=""
+                        <img src="images/i-for-sleep.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>для сна</span>
                       </a>
@@ -164,7 +164,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-mood.png" alt=""
+                        <img src="images/i-mood.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>настроение</span>
                       </a>
@@ -172,7 +172,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-without-soy.png" alt=""
+                        <img src="images/i-without-soy.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>без сои</span>
                       </a>
@@ -180,7 +180,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-gluten-free.png" alt=""
+                        <img src="images/i-gluten-free.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>без глютена</span>
                       </a>
@@ -188,7 +188,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-sugarless.png" alt=""
+                        <img src="images/i-sugarless.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>без сахара</span>
                       </a>
@@ -196,7 +196,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-discounts.png" alt=""
+                        <img src="images/i-discounts.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>скидки</span>
                       </a>
@@ -204,7 +204,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-novelty.png" alt=""
+                        <img src="images/i-novelty.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>новинки</span>
                       </a>
@@ -212,7 +212,7 @@ $router->handle();
 
                     <span class="bottom-header-menu-item">
                       <a href="">
-                        <img src="../images/i-bestsellers.png" alt=""
+                        <img src="images/i-bestsellers.png" alt=""
                              class="bottom-menu-img"><br>
                         <span>хиты продаж</span>
                       </a>
@@ -363,7 +363,7 @@ $router->handle();
             <div class="row">
                 <div class="col-3">
                     <a href="">
-                        <img src="../images/footer-logo.png" alt=""
+                        <img src="images/footer-logo.png" alt=""
                              id="footer-logo-img">
                     </a>
                     <div id="phone-footer">
@@ -565,33 +565,33 @@ $router->handle();
                     <div class="methods-payment-container">
                         <div class="payment-row">
                     <span>
-                      <img src="../images/visa.png" alt=""
+                      <img src="images/visa.png" alt=""
                            id="visa-payment-img">
                     </span>
                             <span>
-                      <img src="../images/mastercard.png" alt=""
+                      <img src="images/mastercard.png" alt=""
                            id="mastercard-payment-img">
                     </span>
                             <span>
-                      <img src="../images/paykeeper.png" alt=""
+                      <img src="images/paykeeper.png" alt=""
                            id="paykeeper-payment-img">
                     </span>
                         </div>
                         <div class="payment-row">
                     <span>
-                      <img src="../images/cash.png" alt=""
+                      <img src="images/cash.png" alt=""
                            id="cash-payment-img">
                     </span>
                             <span>
-                      <img src="../images/sberbank.png" alt=""
+                      <img src="images/sberbank.png" alt=""
                            id="sberbank-payment-img">
                     </span>
                             <span>
-                      <img src="../images/yandex.png" alt=""
+                      <img src="images/yandex.png" alt=""
                            id="yandex-payment-img">
                     </span>
                             <span>
-                      <img src="../images/tinkoff.png" alt=""
+                      <img src="images/tinkoff.png" alt=""
                            id="tinkoff-payment-img">
                     </span>
                         </div>
@@ -602,19 +602,19 @@ $router->handle();
                     <div class="social-media-item-container">
                <span>
                 <a href="">
-                  <img src="../images/vk-icon.png" alt=""
+                  <img src="images/vk-icon.png" alt=""
                        class="social-item-img">
                 </a>
                </span>
                         <span>
                 <a href="">
-                  <img src="../images/telegram-icon.png" alt=""
+                  <img src="images/telegram-icon.png" alt=""
                        class="social-item-img">
                 </a>
                </span>
                         <span>
                 <a href="">
-                  <img src="../images/youtube.png" alt=""
+                  <img src="images/youtube.png" alt=""
                        class="social-item-img">
                 </a>
                </span>

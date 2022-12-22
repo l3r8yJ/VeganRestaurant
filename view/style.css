@@ -592,3 +592,17 @@ ul{
 .change-picture-submit{
     margin-top: 20px;
 }
+
+.user-preview-container{
+    width: 100%;
+    height: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+}
+
+.username-container{
+    float: left;
+    margin-top: 5px;
+}
+

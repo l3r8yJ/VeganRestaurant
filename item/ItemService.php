@@ -71,7 +71,7 @@ class ItemService {
    */
   public function uploadPicture(): string {
     $name = $_FILES['picture-input']['name'];
-    $target = $_SERVER['DOCUMENT_ROOT'] . '/images/';
+    $target = $_SERVER['DOCUMENT_ROOT'] . '/view/images/';
     $new = md5($_POST['id']) . pathinfo($name, PATHINFO_EXTENSION);
     if (file_exists($target . $new)) {
       unlink($target . $new);

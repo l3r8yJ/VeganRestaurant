@@ -10,10 +10,6 @@ $router = new UserRouter(
     new UserRepository(SingletonConnection::connection())
   )
 );
-echo $router->handle();
-//if (isset($_SESSION['USER_ID'])) {
-//  header('Location: /');
-//} else {
-//  header('Location: /?success=no');
-//}
+$response = $router->handle();
+
 

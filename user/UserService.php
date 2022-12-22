@@ -40,7 +40,6 @@ class UserService {
         return 'User with this email already exist';
       }
       $this->repository->create($user);
-      $_SESSION['USER_ID'] = $this->repository->byEmail($_POST['email']);
     } catch(Exception $ex) {
       return $ex->getMessage();
     }
@@ -57,6 +56,10 @@ class UserService {
   public function logout(): mixed {
     unset($_SESSION['USER_ID']);
     return null;
+  }
+
+  public function byId(int $id) : mixed {
+    return $this->repository->byId($id);
   }
 
   private function isAuthorized(): bool {
