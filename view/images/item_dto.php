@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The menu item dto.
  */

@@ -8,16 +8,19 @@ class AuthUser
   /**
    * @param array $params the POST.
    */
-  public function __construct(array $params) {
+  public function __construct(array $params)
+  {
     $this->email = $params['email'];
     $this->password = $params['password'];
   }
 
-  public function getEmail(): string {
+  public function getEmail(): string
+  {
     return $this->email;
   }
 
-  public function getPassword(): array|string {
+  public function getPassword(): array|string
+  {
     return $this->password;
   }
 }

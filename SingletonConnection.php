@@ -1,12 +1,16 @@
 <?php
 
-class SingletonConnection {
+class SingletonConnection
+{
 
   private static $instance;
 
-  private function __construct() { }
+  private function __construct()
+  {
+  }
 
-  private static function getInstance() {
+  private static function getInstance()
+  {
     if (null == SingletonConnection::$instance) {
       $cname = __CLASS__;
       SingletonConnection::$instance = new $cname;
@@ -22,7 +26,8 @@ class SingletonConnection {
     throw new Exception('Unable to create copy of object.');
   }
 
-  public static function connection(): PDO {
+  public static function connection(): PDO
+  {
     try {
       return new PDO('mysql:host=localhost;dbname=l2', 'root', 'root');
     } catch (PDOException $ex) {

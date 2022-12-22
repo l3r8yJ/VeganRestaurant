@@ -1,3 +1,3 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/items_init.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/item-init.php';
 header('Location: /');

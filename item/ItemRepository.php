@@ -1,6 +1,7 @@
 <?php
 
-class ItemRepository {
+class ItemRepository
+{
 
   private PDO $db;
 
@@ -9,14 +10,16 @@ class ItemRepository {
     $this->db = $db;
   }
 
-  public function fetchItems(): bool|PDOStatement {
+  public function fetchItems(): bool|PDOStatement
+  {
     return $this->db->query('
       SELECT * FROM menu_item
       INNER JOIN place On place.id=menu_item.place_id;
     ');
   }
 
-  public function filteredItems(): bool|array {
+  public function filteredItems(): bool|array
+  {
     $stmt = $this->db->prepare('
       SELECT * FROM menu_item INNER JOIN place
       ON place.id=menu_item.place_id WHERE
@@ -27,7 +30,8 @@ class ItemRepository {
     return $stmt->fetchAll();
   }
 
-  public function byId(int $id): mixed {
+  public function byId(int $id): mixed
+  {
     $stmt = $this->db->prepare('SELECT * FROM l2.menu_item 
     INNER JOIN place p ON menu_item.place_id = p.id
     WHERE menu_item.id_item = ? LIMIT 1
@@ -37,8 +41,9 @@ class ItemRepository {
     return $this->nullIfEmpty($items);
   }
 
-  public function create(array $post): bool {
-    $stmt =  $this->db->prepare('
+  public function create(array $post): bool
+  {
+    $stmt = $this->db->prepare('
       INSERT INTO l2.menu_item (name, price, recepie, picture, place_id) 
       VALUES (?, ?, ?, ?, ?)
     ');
@@ -51,7 +56,8 @@ class ItemRepository {
     ]);
   }
 
-  public function edit(array $post): bool {
+  public function edit(array $post): bool
+  {
     $stmt = $this->db->prepare('
         UPDATE l2.menu_item
         SET name = ?, price = ? , recepie = ?, place_id = ?
@@ -66,12 +72,14 @@ class ItemRepository {
     ]);
   }
 
-  public function delete(int $id): bool {
+  public function delete(int $id): bool
+  {
     $stmt = $this->db->prepare('DELETE FROM l2.menu_item WHERE id_item = ?');
     return $stmt->execute([$id]);
   }
 
-  public function changePicture(string $path, int $id): bool {
+  public function changePicture(string $path, int $id): bool
+  {
     $stmt = $this->db->prepare('
       UPDATE l2.menu_item
       SET picture = ? WHERE id_item = ?
@@ -79,7 +87,8 @@ class ItemRepository {
     return $stmt->execute([$path, $id]);
   }
 
-  private function nullIfEmpty(bool|array $items): mixed {
+  private function nullIfEmpty(bool|array $items): mixed
+  {
     if (!count($items)) {
       return null;
     }

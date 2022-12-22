@@ -10,5 +10,3 @@ $userRouter = new UserRouter(
   )
 );
 $response = $userRouter->handle();
-
-

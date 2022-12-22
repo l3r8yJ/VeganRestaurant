@@ -6,10 +6,10 @@
     <title>Кашка овсяная с бананом «Nemoloko», 200мл - купить в Москве в
         магазине Сойка</title>
     <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-            crossorigin="anonymous">
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="/view/style.css">
 </head>
 <body>
@@ -18,8 +18,9 @@
         <div class="row">
             <div class="col-2">
                 <div class="header-logo-container">
-                    <a href="/"><img src="/view/images/soyka-logo-11-22.png" alt=""
-                                    id="header-logo"></a>
+                    <a href="/"><img src="/view/images/soyka-logo-11-22.png"
+                                     alt=""
+                                     id="header-logo"></a>
                 </div>
               <?php if (isset($_SESSION['USER_ID'])): ?>
                   <div class="user-preview-container">
@@ -41,7 +42,8 @@
 
                   <span class="top-header-icon-item">
                     <a href="">
-                      <img src="/view/images/i-phone.png" alt="" class="header-icon"
+                      <img src="/view/images/i-phone.png" alt=""
+                           class="header-icon"
                            id="i-phone-img">
                         +7 (499) 197-00-17
                     </a>
@@ -57,7 +59,8 @@
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="/view/images/i-mail.png" alt="" class="header-icon"
+                      <img src="/view/images/i-mail.png" alt=""
+                           class="header-icon"
                            id="i-mail-img">
                       torg@soyka.ru
                     </a>
@@ -65,7 +68,8 @@
 
                     <span class="top-header-icon-item">
                     <a href="">
-                      <img src="/view/images/i-cart.png" alt="" class="header-icon"
+                      <img src="/view/images/i-cart.png" alt=""
+                           class="header-icon"
                            id="i-cart-img">
                      <sup>0</sup>
                      <span>0.00</span>
@@ -81,9 +85,10 @@
                     </a>
                     </span>
                   <?php if (!isset($_SESSION['USER_ID'])): ?>
-                    <span class="top-header-icon-item" id="key-item">
+                      <span class="top-header-icon-item" id="key-item">
                         <a href="/view/auth-view.php">
-                            <img src="/view/images/i-key.png" alt="" class="header-icon"
+                            <img src="/view/images/i-key.png" alt=""
+                                 class="header-icon"
                                  id="i-key-img">
                         </a>
                   </span>
@@ -91,7 +96,8 @@
 
                     <span class="top-header-icon-item" id="lk-item">
                     <a href="">
-                      <img src="/view/images/lk-icon.png" alt="" class="header-icon"
+                      <img src="/view/images/lk-icon.png" alt=""
+                           class="header-icon"
                            id="lk-icon-img">
                     </a>
                   </span>
@@ -218,7 +224,7 @@
                 <a class="navbar-brand" href="#">
                     <svg version="1.1" id="Capa_1"
                          xmlns="https://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                         x="0px"
                          y="0px" width="459px" height="459px"
                          viewBox="0 0 459 459"
                          style="enable-background:new 0 0 459 459;"

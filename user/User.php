@@ -1,6 +1,7 @@
 <?php
 
-class User {
+class User
+{
 
   private string $fio;
   private string $email;
@@ -15,7 +16,8 @@ class User {
   /**
    * @param array $params the POST.
    */
-  public function __construct(array $params) {
+  public function __construct(array $params)
+  {
     $this->fio = $params['fio'];
     $this->email = $params['email'];
     $this->password = $params['password'];
@@ -27,39 +29,48 @@ class User {
     $this->rhesusFactor = $params['rhesus_factor'];
   }
 
-  public function getFio(): string {
+  public function getFio(): string
+  {
     return $this->fio;
   }
 
-  public function getEmail(): string {
+  public function getEmail(): string
+  {
     return $this->email;
   }
 
-  public function getBirthday(): string {
+  public function getBirthday(): string
+  {
     return $this->birthday;
   }
 
-  public function getAddress(): string {
+  public function getAddress(): string
+  {
     return $this->address;
   }
 
-  public function getSex(): string {
+  public function getSex(): string
+  {
     return $this->sex;
   }
 
-  public function getVk(): string {
+  public function getVk(): string
+  {
     return $this->vk;
   }
 
-  public function getBloodType(): string {
+  public function getBloodType(): string
+  {
     return $this->bloodType;
   }
 
-  public function getRhesusFactor(): string {
+  public function getRhesusFactor(): string
+  {
     return $this->rhesusFactor;
   }
 
-  public function getPassword() {
+  public function getPassword()
+  {
     return $this->password;
   }
 }

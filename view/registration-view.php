@@ -1,18 +1,15 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/index-init.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user-init.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . "/view/header.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/view/header.php';
 ?>
 
 <div class="registration-form-container">
-
-  <?php if(isset($_SESSION['register_result'])):?>
+  <?php if (isset($_SESSION['register_result'])): ?>
       <div class="alert alert-danger" role="alert">
-        <?=$_SESSION['register_result']?>
+        <?= $_SESSION['register_result'] ?>
       </div>
-
-  <?php endif?>
-
+  <?php endif ?>
     <div class="registration-form-title">
         Форма регистрации
     </div>
@@ -24,7 +21,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/view/header.php";
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input name="password" type="password" class="form-control" pattern="\w{5,32}"
+            <input name="password" type="password" class="form-control"
+                   pattern="\w{5,32}"
                    id="exampleInputPassword1" required>
         </div>
         <div class="mb-3">
@@ -40,7 +38,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/view/header.php";
         </div>
         <div class="mb-3">
             <label for="birthday" class="form-label">Date of birth</label>
-            <input name="birthday" type="date" class="form-control" value="12.01.2000"
+            <input name="birthday" type="date" class="form-control"
+                   value="12.01.2000"
                    id="exampleInputPassword1" required>
         </div>
         <div class="mb-3">
@@ -75,5 +74,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/view/header.php";
         </button>
     </form>
 </div>
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/view/footer.php"?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/view/footer.php" ?>
 
