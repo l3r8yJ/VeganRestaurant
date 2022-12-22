@@ -3,7 +3,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Router.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/item/ItemService.php';
 
-class ItemRouter extends Router {
+class ItemRouter extends Router
+{
 
   private ItemService $service;
 
@@ -17,7 +18,7 @@ class ItemRouter extends Router {
     if (null == $route) {
       $route = $this->route();
     }
-    return match($route) {
+    return match ($route) {
       'index' => $this->service->items(),
       'create' => $this->service->create(),
       'edit' => $this->service->edit(),

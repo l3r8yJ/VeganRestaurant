@@ -1,3 +1,5 @@
 <?php
 
-class ItemException extends Exception { }
+class ItemException extends Exception
+{
+}

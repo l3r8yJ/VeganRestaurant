@@ -13,7 +13,6 @@ $userRouter->handle();
 $repo = new PlaceRepository(SingletonConnection::connection());
 $places = $repo->fetchPlaces();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/view/header.php';
-
 ?>
 
 <div class="registration-form-container">
@@ -31,10 +30,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/view/header.php';
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Место хранения</label>
-                <select name="place_name" class="form-control" id="exampleFormControlSelect1">
-                    <?php foreach($places as $place):?>
-                    <option><?=htmlspecialchars($place['place_name'])?></option>
-                    <?php endforeach;?>
+                <select name="place_name" class="form-control"
+                        id="exampleFormControlSelect1">
+                  <?php foreach ($places as $place): ?>
+                      <option><?= htmlspecialchars($place['place_name']) ?></option>
+                  <?php endforeach; ?>
                 </select>
             </div>
             <div class="form-group">

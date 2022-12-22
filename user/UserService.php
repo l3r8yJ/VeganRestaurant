@@ -3,24 +3,27 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/user/AuthUser.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user/User.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user/UserRepository.php';
 
-class UserService {
+class UserService
+{
 
   private UserRepository $repository;
 
-  public function __construct(UserRepository $repository) {
+  public function __construct(UserRepository $repository)
+  {
     $this->repository = $repository;
   }
 
-  public function auth(): string {
+  public function auth(): string
+  {
     $auth = new AuthUser($_POST);
-    if($this->isAuthorized()) {
+    if ($this->isAuthorized()) {
       return 'you already authorized';
     }
-    if($_SERVER['REQUEST_METHOD'] != 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] != 'POST') {
       return 'wrong method';
     }
     $user = $this->repository->byEmail($auth->getEmail());
-    if(null == $user) {
+    if (null == $user) {
       return 'User with this email doesn\'t exist.';
     }
     if ($auth->getPassword() != $user['password']) {
@@ -30,39 +33,44 @@ class UserService {
     return 'authorized';
   }
 
-  public function registration(): string {
-    if($_SERVER['REQUEST_METHOD'] != 'POST') {
+  public function registration(): string
+  {
+    if ($_SERVER['REQUEST_METHOD'] != 'POST') {
       return 'wrong method';
     }
     try {
       $user = new User($_POST);
-      if(null != $this->repository->byEmail($user->getEmail())) {
+      if (null != $this->repository->byEmail($user->getEmail())) {
         return 'User with this email already exist';
       }
       $this->repository->create($user);
-    } catch(Exception $ex) {
+    } catch (Exception $ex) {
       return $ex->getMessage();
     }
     return 'success';
   }
 
-  public function current(): mixed {
+  public function current(): mixed
+  {
     if (!$this->isAuthorized()) {
       return null;
     }
     return $this->repository->byId($_SESSION['USER_ID']);
   }
 
-  public function logout(): mixed {
+  public function logout(): mixed
+  {
     unset($_SESSION['USER_ID']);
     return null;
   }
 
-  public function byId(int $id) : mixed {
+  public function byId(int $id): mixed
+  {
     return $this->repository->byId($id);
   }
 
-  private function isAuthorized(): bool {
+  private function isAuthorized(): bool
+  {
     return isset($_SESSION['USER_ID']);
   }
 }

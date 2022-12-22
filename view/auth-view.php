@@ -4,11 +4,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/user-init.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/view/header.php';
 ?>
 <div class="registration-form-container">
-    <?php if(isset($_SESSION['auth_result'])):?>
-        <div class="alert alert-danger" role="alert">
-            <?=$_SESSION['auth_result']?>
-        </div>
-    <?php endif?>
+  <?php if (isset($_SESSION['auth_result'])): ?>
+      <div class="alert alert-danger" role="alert">
+        <?= $_SESSION['auth_result'] ?>
+      </div>
+  <?php endif ?>
     <div class="registration-form-title">
         Авторизация
     </div>
@@ -39,4 +39,4 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/view/header.php';
     </div>
 
 </div>
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/view/footer.php';?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/view/footer.php'; ?>

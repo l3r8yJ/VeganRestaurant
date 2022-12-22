@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/user-init.php';
 $_SESSION['register_result'] = $response;
 if ('success' == $response) {
